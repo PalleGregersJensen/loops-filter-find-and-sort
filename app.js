@@ -93,6 +93,20 @@ function initApp() {
   loopThroughFivelastYears(years);
 
   logNumbers();
+
+  loppThroughTeachers();
+
+  teachersOver40();
+
+  forOfSearchTeachersByName("RAS");
+
+  foInTeacher();
+
+  whileTeachersLength();
+
+  whileTeacherIsLecturer();
+
+  whileSearchByName("sen");
 }
 // array
 console.log(names);
@@ -192,15 +206,96 @@ function logNumbers() {
   }
 
   // Fra 100 ned til 0 i 10 steps
-  for (let index = 100; index >= 0; index -=10) {
+  for (let index = 100; index >= 0; index -= 10) {
     console.log(index);
   }
 }
 // ========== for of loop ========== //
+function loppThroughTeachers() {
+  for (const teacher of teachers) {
+    console.log(teacher);
+  }
+}
+// Undervisere over 40
+function teachersOver40() {
+  const results = [];
+
+  for (const teacher of teachers)
+    if (teacher.age > 40) {
+      results.push(teacher);
+    }
+
+  console.log(results);
+}
+
+function forOfSearchTeachersByName(searchValue) {
+  searchValue = searchValue.toLowerCase();
+  console.log(searchValue);
+  const results = [];
+
+  for (const teacher of teachers) {
+    const name = teacher.name.toLowerCase();
+    if (name.includes(searchValue)) {
+      results.push(teacher);
+      console.log(results);
+    }
+  }
+}
 
 // ========== for in loop ========== //
 
+function foInTeacher() {
+  for (const key in teacher) {
+    console.log(key);
+    const value = teacher[key];
+    console.log(value);
+  }
+}
+
 // ========== while loops ========== //
+
+function whileTeachersLength() {
+  let index = 0;
+
+  while (index < teachers.length) {
+    const teacher = teachers[index];
+    console.log(teacher);
+    index++;
+  }
+}
+// Hvis underviser er "lecturer"
+function whileTeacherIsLecturer() {
+  let index = 0;
+
+  while (index < teachers.length) {
+    const teacher = teachers[index];
+    if (teacher.title === "Lecturer") {
+      console.log(teacher);
+    }
+    index++;
+  }
+}
+
+function whileSearchByName(searchValue) {
+
+  searchValue = searchValue.toLowerCase();
+  console.log(searchValue);
+
+  const results = [];
+
+  let index = 0;
+
+  while (index < teachers.length) {
+    const teacher = teachers[index];
+    const name = teacher.name.toLocaleLowerCase();
+    if (name.includes(searchValue)) {
+      console.log(teacher);
+       results.push(teacher);
+       console.log(results)
+    }
+    index++;
+  }
+}
 
 // ========== Filter items: array.filter(...) ========== //
 
